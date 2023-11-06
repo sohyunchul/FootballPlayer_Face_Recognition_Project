@@ -1,1 +1,1 @@
-# OpenCV_PJ_1
+# OpenCV_PJ
