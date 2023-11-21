@@ -6,12 +6,6 @@ import math
 import pymysql
 from PIL import ImageFont, ImageDraw, Image
 
-p_inf = []
-player_info = ''
-
-# 커서 생성 (데이터베이스와 상호작용, 데이터베이스 연결을 통해 SQL 쿼리를 실행하고 결과를 처리하기 위한 객체)
-cursor = connection.cursor()
-
 # 웹캠으로 인식된 선수와 이름을 비교하여 정보 출력
     for i in range(len(data)): # db에 저장되어 있는 컬럼의 개수 범위
         if classNames[cls] == data[i][1]: # classNames의 이름과 db -> data 컬럼의 이름과 동일하다면 정보 출력 하여라
