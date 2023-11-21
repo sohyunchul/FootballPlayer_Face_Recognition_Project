@@ -9,50 +9,8 @@ from PIL import ImageFont, ImageDraw, Image
 p_inf = []
 player_info = ''
 
-# 데이터베이스 연결 정보 설정
-db_host = 'localhost'
-db_user = 'hcso'
-db_password = '1234'
-db_name = 'opencv'
-
-# 데이터베이스 연결
-connection = pymysql.connect(host=db_host, user=db_user, password=db_password, db=db_name)
-
 # 커서 생성 (데이터베이스와 상호작용, 데이터베이스 연결을 통해 SQL 쿼리를 실행하고 결과를 처리하기 위한 객체)
 cursor = connection.cursor()
-
-#db연결하는 함수
-def connect_db():
-    try:
-        connect_db = pymysql.connect(
-            user="hcso",
-            password="1234",
-            host="127.0.0.1",
-            db="opencv",
-            charset="utf8",
-        )
-        return connect_db
-    except pymysql.Error as e:
-        print("error : " + str(e))
-        return None
-    
-# DB에서 선수정보 가져오기
-def p_info():
-    list_p = []
-    sensor_db = connect_db()
-    cursor = sensor_db.cursor()
-    sql = "SELECT * FROM player_info"
-    cursor.execute(sql)
-    data = cursor.fetchall()
-    sensor_db.close()
-    return data
-
-# 웹캠으로 인식된 선수의 이름과 db에 저장되어 있는 선수 이름 비교하여 일치하면 선수 정보 출력
-def p_print():
-    # 선수 정보 가져오기
-    global p_inf
-    p_inf = []
-    data = p_info()
 
 # 웹캠으로 인식된 선수와 이름을 비교하여 정보 출력
     for i in range(len(data)): # db에 저장되어 있는 컬럼의 개수 범위
